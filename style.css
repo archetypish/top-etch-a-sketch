@@ -34,3 +34,11 @@
 .bg-red {
   background-color: red;
 }
+
+/* Add styles for button */
+button {
+  background: #fff;
+  border: 1px solid black;
+  padding: 12px 36px;
+  cursor: pointer;
+}

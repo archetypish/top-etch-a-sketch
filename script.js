@@ -21,3 +21,20 @@ for (let i = 0; i < 256; i++) {
     event.target.style.backgroundColor = "red";
   });
 }
+// Add a button to the top of the screen that will send the user
+// a popup asking for the number of squares per side for the new grid.
+
+const btnForUserInput = document.createElement("button");
+btnForUserInput.textContent = "Change Grid Size";
+document.body.insertBefore(btnForUserInput, container);
+
+btnForUserInput.addEventListener("click", (event) => {
+  let gridSizeWidth = parseInt(prompt("Enter Grid Width", ""));
+  let gridSizeHeight = parseInt(prompt("Enter Grid Height", ""));
+  generateGrid(gridSizeWidth, gridSizeHeight);
+});
+
+function generateGrid(gridSizeWidth, gridSizeHeight) {
+  // remove existing grid
+  // create new grid in the same size of the container
+}
