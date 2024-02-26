@@ -29,3 +29,8 @@
   flex-wrap: wrap;
   width: 800px;
 }
+
+/* Create a class with bg of red */
+.bg-red {
+  background-color: red;
+}
