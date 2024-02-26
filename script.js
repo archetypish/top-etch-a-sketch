@@ -35,7 +35,7 @@ btnForUserInput.addEventListener("click", (event) => {
 // Event Handler to change the background color to red
 
 function changeBackgroundColor(e) {
-  e.target.style.backgroundColor = "red";
+  e.target.style.backgroundColor = generateRandomRGBColor();
 }
 
 // Grid Generator with custom values
@@ -63,4 +63,15 @@ function generateGrid(gridWidth, gridHeight) {
       col[colIndex].addEventListener("mouseenter", changeBackgroundColor);
     }
   }
+}
+
+// Random Color in every cell
+function generateRandomRGBColor() {
+  return `rgb(${generateRandomNumber(256)}, ${generateRandomNumber(
+    256
+  )}, ${generateRandomNumber(256)})`;
+}
+
+function generateRandomNumber(number) {
+  return Math.floor(Math.random() * number);
 }
