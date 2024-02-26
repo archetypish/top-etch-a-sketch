@@ -16,3 +16,5 @@ for (let i = 0; i < 256; i++) {
 document.body.appendChild(container);
 
 // use css flexbox to arrange the divs in 16 x 16 grid
+
+//

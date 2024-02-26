@@ -7,7 +7,25 @@
 }
 
 .item {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 50px;
   height: 50px;
+}
+
+/* lay out items as 16 x 16 grid using flexbox*/
+
+.container {
+  display: flex;
+}
+
+/* prevent item from shrinking and use width */
+.item {
+  flex: 0 0 auto;
+}
+
+/* wrap items to include on 16 items per line */
+
+.container {
+  flex-wrap: wrap;
+  width: 800px;
 }
