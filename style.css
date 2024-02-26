@@ -6,28 +6,25 @@
   margin: 0;
 }
 
-.item {
-  /* border: 2px solid red; */
-  width: 50px;
-  height: 50px;
-}
-
-/* lay out items as 16 x 16 grid using flexbox*/
-
 .container {
+  width: 960px;
+  height: 960px;
+  /* lay out items as 16 x 16 grid using flexbox*/
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid black;
 }
 
-/* prevent item from shrinking and use width */
+.row {
+  display: flex;
+  flex: 1 1 0;
+  border: 1px solid black;
+}
+
 .item {
-  flex: 0 0 auto;
-}
-
-/* wrap items to include on 16 items per line */
-
-.container {
-  flex-wrap: wrap;
-  width: 800px;
+  flex: 1 1 0;
+  border: 1px solid black;
 }
 
 /* Create a class with bg of red */
