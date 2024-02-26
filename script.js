@@ -16,8 +16,19 @@ btnForUserInput.textContent = "Change Grid Size";
 document.body.insertBefore(btnForUserInput, container);
 
 btnForUserInput.addEventListener("click", (event) => {
-  let gridSizeWidth = parseInt(prompt("Enter Grid Width", ""));
-  let gridSizeHeight = parseInt(prompt("Enter Grid Height", ""));
+  let gridSizeWidth = 0;
+  let gridSizeHeight = 0;
+
+  gridSizeWidth = parseInt(prompt("Enter Grid Width (<=100)", ""));
+  while (gridSizeWidth > 100) {
+    gridSizeWidth = parseInt(prompt("Re-Enter Grid Width <=100", ""));
+  }
+
+  gridSizeHeight = parseInt(prompt("Enter Grid Height (<=100)", ""));
+  while (gridSizeHeight > 100) {
+    gridSizeHeight = parseInt(prompt("Re-enter Grid Height <=100", ""));
+  }
+
   generateGrid(gridSizeWidth, gridSizeHeight);
 });
 
