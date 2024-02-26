@@ -19,6 +19,8 @@ btnForUserInput.textContent = "Change Grid Size";
 document.body.insertBefore(btnForUserInput, container);
 
 btnForUserInput.addEventListener("click", (event) => {
+  rgbList = getRandomRGBColorList();
+  eventCounter = 0;
   let gridSizeWidth = 0;
   let gridSizeHeight = 0;
 
