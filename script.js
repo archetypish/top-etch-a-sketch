@@ -35,7 +35,7 @@ btnForUserInput.addEventListener("click", (event) => {
 // Event Handler to change the background color to red
 
 function changeBackgroundColor(e) {
-  e.target.style.backgroundColor = generateRandomRGBColor();
+  e.target.style.backgroundColor = makeColor(getRandomRGBColorList());
 }
 
 // Grid Generator with custom values
@@ -66,12 +66,38 @@ function generateGrid(gridWidth, gridHeight) {
 }
 
 // Random Color in every cell
-function generateRandomRGBColor() {
-  return `rgb(${generateRandomNumber(256)}, ${generateRandomNumber(
-    256
-  )}, ${generateRandomNumber(256)})`;
+function makeColor(rgbList) {
+  return `rgb(${rgbList[0]},${rgbList[1]},${rgbList[2]}`;
+}
+
+function getRandomRGBColorList() {
+  return [
+    generateRandomNumber(256),
+    generateRandomNumber(256),
+    generateRandomNumber(256),
+  ];
 }
 
 function generateRandomNumber(number) {
   return Math.floor(Math.random() * number);
 }
+
+// progressive darkening event
+
+// each interaction adds 10% of black or color to the square
+// after 10 interactions, the result is complete black
+
+function applyProgressiveDarkEffect(rgbList) {
+  // reduce each by 10%
+  for (let i = 9; i >= 0; i--) {
+    rgbList.forEach((component) => {
+      component *= i / 10;
+    });
+  }
+  return rgbList;
+}
+
+// Flow:
+// generate random number
+// apply progressive dark effect to complete in 10 iterations
+// continue with black
