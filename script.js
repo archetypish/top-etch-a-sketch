@@ -5,6 +5,9 @@ const container = document.createElement("div");
 container.classList.add("container");
 document.body.appendChild(container);
 
+// Sketch Color
+let rgbList = getRandomRGBColorList();
+
 // Generate a grid of 16x16 size
 generateGrid(16, 16);
 
@@ -32,11 +35,46 @@ btnForUserInput.addEventListener("click", (event) => {
   generateGrid(gridSizeWidth, gridSizeHeight);
 });
 
-// Event Handler to change the background color to red
-
+// Event Handler to change the background color to random color
+let eventCounter = 0;
+let rgbListCurrent;
 function changeBackgroundColor(e) {
-  e.target.style.backgroundColor = makeColor(getRandomRGBColorList());
+  //   for random color
+  //   e.target.style.backgroundColor = makeColor(getRandomRGBColorList());
+
+  // progressive update
+  if (eventCounter < 10) {
+    eventCounter++;
+    rgbListCurrent = rgbList.map(
+      (component) => (1 - eventCounter / 10) * component
+    );
+  } else {
+    rgbListCurrent = [0, 0, 0];
+  }
+  e.target.style.backgroundColor = makeColor(rgbListCurrent);
 }
+
+// Random Color in every cell
+function makeColor(rgbList) {
+  return `rgb(${rgbList[0]},${rgbList[1]},${rgbList[2]}`;
+}
+
+function getRandomRGBColorList() {
+  return [
+    generateRandomNumber(256),
+    generateRandomNumber(256),
+    generateRandomNumber(256),
+  ];
+}
+
+function generateRandomNumber(number) {
+  return Math.floor(Math.random() * number);
+}
+
+// progressive darkening event
+
+// each interaction adds 10% of black or color to the square
+// after 10 interactions, the result is complete black
 
 // Grid Generator with custom values
 // that support auto grid cell sizing with flex grow
@@ -64,40 +102,3 @@ function generateGrid(gridWidth, gridHeight) {
     }
   }
 }
-
-// Random Color in every cell
-function makeColor(rgbList) {
-  return `rgb(${rgbList[0]},${rgbList[1]},${rgbList[2]}`;
-}
-
-function getRandomRGBColorList() {
-  return [
-    generateRandomNumber(256),
-    generateRandomNumber(256),
-    generateRandomNumber(256),
-  ];
-}
-
-function generateRandomNumber(number) {
-  return Math.floor(Math.random() * number);
-}
-
-// progressive darkening event
-
-// each interaction adds 10% of black or color to the square
-// after 10 interactions, the result is complete black
-
-function applyProgressiveDarkEffect(rgbList) {
-  // reduce each by 10%
-  for (let i = 9; i >= 0; i--) {
-    rgbList.forEach((component) => {
-      component *= i / 10;
-    });
-  }
-  return rgbList;
-}
-
-// Flow:
-// generate random number
-// apply progressive dark effect to complete in 10 iterations
-// continue with black
